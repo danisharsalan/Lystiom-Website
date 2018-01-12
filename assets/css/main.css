@@ -7,6 +7,81 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
+
+ /* Default to hide the video on all devices */
+ #video{display:none}
+
+ /* Default to display the image on all devices */
+ #videosubstitute{display:block;width:auto;height:100%;}
+ 
+ html, body {
+	 height: 100%;
+	 margin: 0;
+ }
+ #fullScreenDiv{
+	 width:100%;
+	 min-height: 100%; 
+	/* Set the height to match that of the viewport. */
+	 height: 100vh;
+	 width: auto;
+	 padding:0!important;
+	 margin: 0!important;
+	 background-color: gray;
+	 position: relative;
+ }
+ #video{    
+	 width: 100vw; 
+	 height: auto;
+	 object-fit: cover;
+	 left: 0px;
+	 top: 0px;
+	 z-index: 1;
+ }
+ 
+ @media (min-aspect-ratio: 16/9) {
+   #video{
+	 height: 150%;
+	 top: -100%;
+   }
+   #videosubstitute{
+	 display:block;
+	 width: 100%;
+	 height: auto;}
+ }
+ 
+ @media (max-aspect-ratio: 16/9) {
+   #video {
+	 width: 150%;
+	 left: -100%;
+   }
+   #videosubstitute{display:block;width:auto;height:100%;}
+ }
+ /*if there is 992  pixels or more, then display the video but hide the image*/
+ @media only screen and (min-width : 992px) {
+ #video{display:block;}
+ #videosubstitute{display:none}
+ }   
+ 
+ /* The container for our text and stuff */
+ #messageBox{
+	 position: absolute;  top: 0;  left: 0;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 width: 100%;
+	 height:100%;
+ }
+
+
+
+
+
+
+
+
+
+
+
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -82,7 +157,7 @@
 	}
 
 	.container {
-		width: 960px;
+		width: 100%;
 	}
 
 	@media screen and (min-width: 737px) {
@@ -106,7 +181,7 @@
 		}
 
 		.container {
-			width: 1200px;
+			width: 100%;
 		}
 
 	}
@@ -132,7 +207,7 @@
 		}
 
 		.container {
-			width: 1000px;
+			width: 100%;
 		}
 
 	}
@@ -1846,7 +1921,7 @@
 		/* Wrappers */
 
 			#header-wrapper {
-				padding: 3em 0;
+				padding: 0 0;
 			}
 
 			.wrapper {
@@ -1861,23 +1936,23 @@
 
 			#header {
 				position: relative;
-				border-radius: 10px;
-				background: rgba(255, 255, 255, 0.1);
+				border-radius: 0;
+				background: #f1f1f1;
 				padding: 0.75em;
 			}
 
 				#header .inner {
-					background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png");
+					/* background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png");
 					background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png");
 					background-image: -ms-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png");
-					background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png");
+					background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35)), url("images/bg02.png"); */
 					position: relative;
 					height: 5.5em;
 					background-color: #3B3E45;
-					background-color: rgba(59, 62, 69, 0.9);
-					border-radius: 8px;
-					box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.45), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.15);
-					text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
+					background-color: #f1f1f1;
+					border-radius: 0;
+					/* box-shadow: inset 0px 0px 0px 1px rgba(0, 0, 0, 0.45), inset 0px 2px 1px 0px rgba(255, 255, 255, 0.15);
+					text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5); */
 				}
 
 				#header h1 {
@@ -1887,6 +1962,13 @@
 					margin-top: -0.65em;
 					font-size: 1.5em;
 					color: #fff;
+				}
+
+				#header img {
+					position: absolute;
+					left: 1.75em;
+					top: 50%;
+					margin-top: -1.3em;
 				}
 
 		/* Nav */
@@ -1904,7 +1986,7 @@
 				}
 
 					#nav > ul > li > a, #nav > ul > li > span {
-						color: #fff;
+						color: #555;
 						text-decoration: none;
 						text-transform: uppercase;
 						font-weight: 800;
@@ -1968,10 +2050,10 @@
 		/* Banner */
 
 			#banner {
-				width: 940px;
+				width: 100%;
 				margin: 0 auto;
 				overflow: hidden;
-				padding: 9em 0 6em 0;
+				padding: 0 0 0 0;
 			}
 
 				#banner p {
@@ -2004,7 +2086,7 @@
 		/* Wrappers */
 
 			#header-wrapper {
-				padding: 2em 0 0 0;
+				padding: 0 0 0 0;
 				height: 11em;
 			}
 
@@ -2023,8 +2105,8 @@
 		/* Banner */
 
 			#banner {
-				width: 940px;
-				padding: 3em 0 0 0;
+				width: 100%;
+				padding: 0 0 0 0;
 			}
 
 				#banner h2 {
